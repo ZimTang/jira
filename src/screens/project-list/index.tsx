@@ -5,7 +5,7 @@ import * as qs from "qs";
 import { cleanObject, useDebounce, useMount } from "utils";
 
 const apiUrl = process.env.REACT_APP_API_URL;
-export default function ProjectList() {
+export default function ProjectListScreen() {
   const [param, setParam] = useState({
     name: "",
     personId: "",
