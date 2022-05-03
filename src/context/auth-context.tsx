@@ -1,4 +1,5 @@
 import React, { ReactNode, useState } from "react";
+import "antd/dist/antd.less";
 import * as auth from "auth-provider";
 import { User } from "screens/project-list/search-panel";
 import { http } from "utils/http";
