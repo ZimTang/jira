@@ -1,4 +1,6 @@
+import styled from "@emotion/styled";
 import { Table } from "antd";
+import dayjs from "dayjs";
 import React from "react";
 import { User } from "./search-panel";
 
@@ -8,6 +10,7 @@ interface Project {
   personId: string;
   pin: boolean;
   organization: string;
+  created: number;
 }
 
 interface ListProps {
@@ -28,6 +31,10 @@ export default function List({ list, users }: ListProps) {
           },
         },
         {
+          title: "部门",
+          dataIndex: "organization",
+        },
+        {
           title: "负责人",
           render(value, project) {
             return (
@@ -37,6 +44,19 @@ export default function List({ list, users }: ListProps) {
               </span>
             );
           },
+        },
+        {
+          title: "创建时间",
+          render(value, project) {
+            return (
+              <span>
+                {project.created
+                  ? dayjs(project.created).format("YYYY-MM-DD")
+                  : "无"}
+              </span>
+            );
+          },
+          dataIndex: "created",
         },
       ]}
       dataSource={list}
