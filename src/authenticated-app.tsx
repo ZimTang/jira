@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { Button } from "antd";
 import { useAuth } from "context/auth-context";
 import ProjectListScreen from "screens/project-list";
+import { Row } from "components/lib";
 
 /**
  * grid and flex
@@ -19,11 +20,11 @@ export const AuthenticatedApp = () => {
   const { logout } = useAuth();
   return (
     <Container>
-      <Header>
-        <HeaderLeft>
-          <h3>logo</h3>
-          <h3>xiangmu</h3>
-          <h3>yonghu</h3>
+      <Header between={true}>
+        <HeaderLeft gap={true}>
+          <h2>logo</h2>
+          <h2>项目</h2>
+          <h2>用户</h2>
         </HeaderLeft>
         <HeaderRight>
           <Button type="primary" onClick={logout}>
@@ -31,52 +32,23 @@ export const AuthenticatedApp = () => {
           </Button>
         </HeaderRight>
       </Header>
-      <Nav>nav</Nav>
       <Main>
         <ProjectListScreen />
       </Main>
-      <Aside>aside</Aside>
-      <Footer>footer</Footer>
     </Container>
   );
 };
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: 6rem 1fr 6rem;
-  grid-template-columns: 20rem 1fr 20rem;
-  grid-template-areas:
-    "header header header"
-    "nav main aside"
-    "footer footer footer";
-  grid-gap: 10rem;
+  grid-template-rows: 6rem 1fr 6rem;
   height: 100vh;
 `;
 
 // grid-area 用来给grid元素起名字
-const Header = styled.header`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  grid-area: header;
-`;
+const Header = styled(Row)``;
 
-const HeaderLeft = styled.div`
-  display: flex;
-  align-items: center;
-`;
+const HeaderLeft = styled(Row)``;
 
 const HeaderRight = styled.div``;
-const Main = styled.main`
-  grid-area: main;
-`;
-const Nav = styled.nav`
-  grid-area: nav;
-`;
-const Aside = styled.aside`
-  grid-area: aside;
-`;
-const Footer = styled.footer`
-  grid-area: footer;
-`;
+const Main = styled.main``;
