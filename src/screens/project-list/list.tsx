@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
-import { Table } from "antd";
+import { Table, TableProps } from "antd";
 import dayjs from "dayjs";
 import React from "react";
 import { User } from "./search-panel";
 
-interface Project {
+export interface Project {
   id: string;
   name: string;
   personId: string;
@@ -13,12 +13,11 @@ interface Project {
   created: number;
 }
 
-interface ListProps {
-  list: Project[];
+interface ListProps extends TableProps<Project> {
   users: User[];
 }
 
-export default function List({ list, users }: ListProps) {
+export default function List({ users, ...props }: ListProps) {
   return (
     <Table
       pagination={false}
@@ -59,7 +58,7 @@ export default function List({ list, users }: ListProps) {
           dataIndex: "created",
         },
       ]}
-      dataSource={list}
+      {...props}
     ></Table>
   );
 }
